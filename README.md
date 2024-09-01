@@ -1,85 +1,93 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# Client Gateway Microservice
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+This is the Client Gateway Microservice, built with [NestJS](https://nestjs.com/). It serves as an intermediary between the client and other microservices such as the Products Microservice and the Orders Microservice. The Client Gateway Microservice uses TCP connections to efficiently communicate with these services, ensuring fast and reliable data exchange.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## Features
+- **TCP Connectivity**: Secure and efficient TCP connections to microservices.
+- **Scalable Architecture**: Built on top of NestJS, leveraging its modular architecture for easy scalability.
+- **Error Handling**: Robust error handling mechanisms to ensure smooth communication between microservices.
 
-## Description
+## Prerequisites
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+Before you begin, ensure you have met the following requirements:
 
-## Project setup
+- **Node.js**: v16.x or higher
+- **npm**: v7.x or higher (comes with Node.js)
+- **Nest CLI**: Install globally using `npm install -g @nestjs/cli`
+- **Microservices**: The Products Microservice and Orders Microservice should be running and accessible.
+
+## Getting Started
+
+### 1. Clone the Repository
+
+First, clone the repository to your local machine:
 
 ```bash
-$ npm install
+git clone https://github.com/yourusername/client-gateway-microservice.git
+cd client-gateway-microservice
 ```
 
-## Compile and run the project
+### 2. Install Dependencies
+
+Install the necessary dependencies using npm:
 
 ```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+npm install
 ```
 
-## Run tests
+### 3. Environment Configuration
+
+Create a `.env` file in the root of the project to configure environment variables:
+
+```env
+# TCP Connection Configuration
+PRODUCTS_MICROSERVICE_HOST=localhost
+PRODUCTS_MICROSERVICE_PORT=3001
+```
+
+Adjust the values according to your environment setup.
+
+### 4. Running the Microservice
+
+To start the microservice in development mode, use the following command:
 
 ```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+npm run start:dev
 ```
 
-## Resources
+For production mode:
 
-Check out a few resources that may come in handy when working with NestJS:
+```bash
+npm run start:prod
+```
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+### 5. Testing the Microservice
 
-## Support
+NestJS comes with a built-in testing framework. To run the unit tests for the microservice:
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+```bash
+npm run test
+```
 
-## Stay in touch
+## Project Structure
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+Here is a brief overview of the project structure:
 
-## License
+- **`app.module.ts`**: The root module that imports all other modules.
+- **`main.ts`**: The main entry point of the application where the NestJS application is created.
+- **`products/`**: Contains the logic related to the Products Microservice.
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+## Common Issues
+
+### 1. Connection Refused
+
+If you encounter a `Connection Refused` error, ensure that the Products Microservice and Orders Microservice are running and that the host and port configurations in the `.env` file are correct.
+
+### 2. Port Conflicts
+
+Ensure that the ports specified in the `.env` file are not being used by other services. If they are, modify the port numbers accordingly.
+
+## Contributing
+
+If you would like to contribute to this project, please fork the repository and create a pull request. Contributions, issues, and feature requests are welcome!
+
