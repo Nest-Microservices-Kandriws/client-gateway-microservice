@@ -91,3 +91,5 @@ Ensure that the ports specified in the `.env` file are not being used by other s
 
 If you would like to contribute to this project, please fork the repository and create a pull request. Contributions, issues, and feature requests are welcome!
 
+# NAS
+docker run -d --name nats-main -p 4222:4222 -p 6222:6222 -p 8222:8222 nats
