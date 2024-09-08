@@ -12,7 +12,7 @@ const envVarsSchema = joi.object({
         .string()
         .valid('development', 'production', 'test')
         .required(),
-    PORT: joi.number().default(3000),
+    PORT: joi.number().required(),
 
     NATS_SERVERS: joi.array().items(joi.string()).required()
 }).unknown(true);
