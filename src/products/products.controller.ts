@@ -13,7 +13,7 @@ export class ProductsController {
     @Inject(NAST_SERVICE) private readonly client: ClientProxy,
   ) { }
 
-  @UseGuards(AuthGuard)
+  //@UseGuards(AuthGuard)
   @Post()
   createProduct(@Body() createProductDto: CreateProductDto) {
     return this.client.send({ cmd: 'create_product' }, createProductDto)
